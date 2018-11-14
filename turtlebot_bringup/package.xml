@@ -26,4 +26,6 @@
   <run_depend>linux_hardware</run_depend>
   <run_depend>rocon_app_manager</run_depend>
   <run_depend>depthimage_to_laserscan</run_depend>
+
+  <test_depend>rostest</test_depend>
 </package>
