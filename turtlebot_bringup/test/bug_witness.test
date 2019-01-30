@@ -3,9 +3,9 @@
   <arg name="depth_registration"              default="true"/>
   <arg name="scan_topic" default="scan"/>
 
-  <node pkg="nodelet" type="nodelet" ns="$(arg camera)" name="$(arg camera)_nodelet_manager" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="$(arg camera)_nodelet_manager" args="manager"/>
 
-  <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan" args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet $(arg camera)/$(arg camera)_nodelet_manager">
+  <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan" args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet $(arg camera)_nodelet_manager">
     <param name="scan_height" value="10"/>
     <param name="output_frame_id" value="/$(arg camera)_depth_frame"/>
     <param name="range_min" value="0.45"/>
@@ -15,5 +15,5 @@
     <remap from="$(arg camera)/scan" to="$(arg scan_topic)"/>
   </node>
 
-  <test test-name="bug_witness" pkg="turtlebot_bringup" type="bug_witness" time-limit="60.0" />
+  <test test-name="bug_witness" pkg="turtlebot_bringup" type="bug_witness" time-limit="30.0" />
 </launch>
