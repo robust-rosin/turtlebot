@@ -10,8 +10,8 @@ from sensor_msgs.msg import Image, LaserScan
 
 class BugWitness(unittest.TestCase):
     def test_topic_subscribed(self):
-        sub = rospy.Subscriber("/depthimage_to_laserscan/scan", LaserScan, self.skip)
-        pub = rospy.Publisher("/depthimage_to_laserscan/camera/depth_registered/image_raw", Image, queue_size=10)
+        sub = rospy.Subscriber("/camera/depthimage_to_laserscan/scan", LaserScan, self.skip)
+        pub = rospy.Publisher("/camera/depthimage_to_laserscan/camera/depth_registered/image_raw", Image, queue_size=10)
         rate = rospy.Rate(5)
         while not rospy.is_shutdown():
             if pub.get_num_connections() > 0:
