@@ -15,5 +15,5 @@
     <remap from="$(arg camera)/scan" to="$(arg scan_topic)"/>
   </node>
 
-  <test test-name="bug_witness" pkg="turtlebot_bringup" type="bug_witness.py" time-limit="60.0" />
+  <test test-name="bug_witness" pkg="turtlebot_bringup" type="bug_witness" time-limit="60.0" />
 </launch>
