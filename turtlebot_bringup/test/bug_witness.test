@@ -1,6 +1,8 @@
 <launch>
   <arg name="camera"      default="camera"/>
   <arg name="depth_registration"              default="true"/>
+  <arg     if="$(arg depth_registration)" name="depth" value="depth_registered" />
+  <arg unless="$(arg depth_registration)" name="depth" value="depth" />
   <arg name="scan_topic" default="scan"/>
 
   <node pkg="nodelet" type="nodelet" name="$(arg camera)/$(arg camera)_nodelet_manager" args="manager"/>
@@ -9,7 +11,7 @@
     <param name="scan_height" value="10"/>
     <param name="output_frame_id" value="/$(arg camera)_depth_frame"/>
     <param name="range_min" value="0.45"/>
-    <remap from="image" to="$(arg camera)/depth/image_raw"/>
+    <remap from="image" to="$(arg camera)/$(arg depth)/image_raw"/>
     <remap from="scan" to="$(arg scan_topic)"/>
     <remap from="$(arg camera)/image" to="$(arg camera)/depth/image_raw"/>
     <remap from="$(arg camera)/scan" to="$(arg scan_topic)"/>
